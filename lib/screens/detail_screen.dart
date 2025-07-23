@@ -9,6 +9,8 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Bildschirmhöhe abrufen, um die Bildhöhe relativ zu setzen
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(title: const Text('Details')),
       body: SingleChildScrollView(
@@ -20,6 +22,7 @@ class DetailScreen extends StatelessWidget {
               child: Image.asset(
                 item.imagePath,
                 width: double.infinity,
+                height: screenHeight * 0.40,
                 fit: BoxFit.cover,
               ),
             ),
