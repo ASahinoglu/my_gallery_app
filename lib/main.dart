@@ -14,10 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Gallery App',
       theme: ThemeData(
-        // 'useMaterial3: true' ist für NavigationBar empfohlen
         useMaterial3: true,
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: const AppBarTheme(
+          //backgroundColor: Color.fromARGB(255, 110, 22, 16),
+          backgroundColor: Color(0xFFB7414F),
+          foregroundColor: Colors.white,
+        ),
       ),
       home: const MainScreen(),
     );
@@ -53,10 +57,18 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
+        backgroundColor: const Color(0xFFB7414F),
+        indicatorColor: const Color(0xFFF9D6D6),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        labelTextStyle: WidgetStateProperty.all(
+          const TextStyle(color: Colors.white),
+        ),
+
         destinations: const <NavigationDestination>[
           NavigationDestination(
             icon: Icon(
               Icons.photo_outlined,
+              color: Colors.white,
             ), // Outline-Icon für nicht ausgewählt
             selectedIcon: Icon(Icons.photo), // Ausgewählter Icon
             label: 'Bilder',
@@ -64,6 +76,7 @@ class _MainScreenState extends State<MainScreen> {
           NavigationDestination(
             icon: Icon(
               Icons.person_outline,
+              color: Colors.white,
             ), // Outline-Icon für nicht ausgewählt
             selectedIcon: Icon(Icons.person), // Ausgewählter Icon
             label: 'Über mich',

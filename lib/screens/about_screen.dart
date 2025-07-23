@@ -12,6 +12,18 @@ class AboutScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            //Profilbild
+            Center(
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/kaya.jpeg',
+                  width: 150,
+                  height: 150,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
             const Text(
               'Kaya Müller',
               style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
