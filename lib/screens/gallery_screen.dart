@@ -1,9 +1,8 @@
-// lib/screens/gallery_screen.dart
 import 'package:flutter/material.dart';
 import '../gallery_data.dart';
 import '../models/gallery_item.dart';
 import '../widgets/gallery_card.dart';
-import '../widgets/custom_app_bar.dart'; // <--- NEUER IMPORT HINZUGEFÜGT
+import '../widgets/custom_app_bar.dart';
 
 enum SortOption { newest, oldest, titleAsc, titleDesc }
 
@@ -119,7 +118,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        // <--- HIER WURDE DIE APPBAR ERSETZT
         titleText: 'MyGallery',
         actions: [
           IconButton(icon: const Icon(Icons.sort), onPressed: _showSortOptions),
