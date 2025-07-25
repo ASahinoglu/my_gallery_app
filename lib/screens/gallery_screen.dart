@@ -53,28 +53,22 @@ class _GalleryScreenState extends State<GalleryScreen> {
     });
     Navigator.pop(context);
 
-    String message;
-    switch (option) {
-      case SortOption.newest:
-        message = 'Bilder nach Datum (neueste zuerst) sortiert!';
-        break;
-      case SortOption.oldest:
-        message = 'Bilder nach Datum (älteste zuerst) sortiert!';
-        break;
-      case SortOption.titleAsc:
-        message = 'Bilder nach Titel (A-Z) sortiert!';
-        break;
-      case SortOption.titleDesc:
-        message = 'Bilder nach Titel (Z-A) sortiert!';
-        break;
-    }
+    //String message;
+    final snackMessages = {
+      SortOption.newest: 'Bilder nach Datum (neueste zuerst) sortiert!',
+      SortOption.oldest: 'Bilder nach Datum (älteste zuerst) sortiert!',
+      SortOption.titleAsc: 'Bilder nach Titel (A-Z) sortiert!',
+      SortOption.titleDesc: 'Bilder nach Titel (Z-A) sortiert!',
+    };
+
+    final message = snackMessages[option]!;
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(10),
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
@@ -126,8 +120,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
       body: SafeArea(
         child: GridView.builder(
           padding: const EdgeInsets.all(8.0),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 300,
             crossAxisSpacing: 8.0,
             mainAxisSpacing: 8.0,
             childAspectRatio: 0.8,

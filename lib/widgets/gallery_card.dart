@@ -36,6 +36,8 @@ class GalleryCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 item.imageTitle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16.0,

@@ -52,6 +52,7 @@ class DetailScreen extends StatelessWidget {
                       item.imageDescription,
                       style: const TextStyle(fontSize: 18.0),
                     ),
+                    const SizedBox(height: 16.0),
                   ],
                 ),
               ),

@@ -70,7 +70,10 @@ class _MainScreenState extends State<MainScreen> {
               Icons.photo_outlined,
               color: Colors.white,
             ), // Outline-Icon für nicht ausgewählt
-            selectedIcon: Icon(Icons.photo), // Ausgewählter Icon
+            selectedIcon: Icon(
+              Icons.photo,
+              color: Colors.black,
+            ), // Ausgewählter Icon
             label: 'Bilder',
           ),
           NavigationDestination(
@@ -78,7 +81,10 @@ class _MainScreenState extends State<MainScreen> {
               Icons.person_outline,
               color: Colors.white,
             ), // Outline-Icon für nicht ausgewählt
-            selectedIcon: Icon(Icons.person), // Ausgewählter Icon
+            selectedIcon: Icon(
+              Icons.person,
+              color: Colors.black,
+            ), // Ausgewählter Icon
             label: 'Über mich',
           ),
         ],
