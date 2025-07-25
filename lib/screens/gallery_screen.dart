@@ -7,7 +7,14 @@ import '../widgets/custom_app_bar.dart';
 enum SortOption { newest, oldest, titleAsc, titleDesc }
 
 class GalleryScreen extends StatefulWidget {
-  const GalleryScreen({super.key});
+  final Set<String> favoriteIds;
+  final void Function(String) onToggleFavorite;
+
+  const GalleryScreen({
+    super.key,
+    required this.favoriteIds,
+    required this.onToggleFavorite,
+  });
 
   @override
   State<GalleryScreen> createState() => _GalleryScreenState();
@@ -129,7 +136,11 @@ class _GalleryScreenState extends State<GalleryScreen> {
           itemCount: _currentGalleryItems.length,
           itemBuilder: (context, index) {
             final item = _currentGalleryItems[index];
-            return GalleryCard(item: item);
+            return GalleryCard(
+              item: item,
+              isFavorite: widget.favoriteIds.contains(item.id),
+              onFavoriteToggle: () => widget.onToggleFavorite(item.id),
+            );
           },
         ),
       ),

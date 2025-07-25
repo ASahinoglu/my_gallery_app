@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/gallery_screen.dart';
 import 'screens/about_screen.dart';
+import 'screens/favorites_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,14 +39,30 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    GalleryScreen(),
-    AboutScreen(),
+  List<Widget> get _widgetOptions => [
+    GalleryScreen(favoriteIds: _favoriteIds, onToggleFavorite: _toggleFavorite),
+    FavoritesScreen(
+      favoriteIds: _favoriteIds,
+      onToggleFavorite: _toggleFavorite,
+    ),
+    const AboutScreen(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  final Set<String> _favoriteIds = {};
+
+  void _toggleFavorite(String id) {
+    setState(() {
+      if (_favoriteIds.contains(id)) {
+        _favoriteIds.remove(id);
+      } else {
+        _favoriteIds.add(id);
+      }
     });
   }
 
@@ -72,9 +89,20 @@ class _MainScreenState extends State<MainScreen> {
             ), // Outline-Icon für nicht ausgewählt
             selectedIcon: Icon(
               Icons.photo,
-              color: Colors.black,
+              color: Colors.blue,
             ), // Ausgewählter Icon
             label: 'Bilder',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.favorite_border_outlined,
+              color: Colors.white,
+            ), // Outline-Icon für nicht ausgewählt
+            selectedIcon: Icon(
+              Icons.favorite,
+              color: Colors.blue,
+            ), // Ausgewählter Icon
+            label: 'Favoriten',
           ),
           NavigationDestination(
             icon: Icon(
@@ -83,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
             ), // Outline-Icon für nicht ausgewählt
             selectedIcon: Icon(
               Icons.person,
-              color: Colors.black,
+              color: Colors.blue,
             ), // Ausgewählter Icon
             label: 'Über mich',
           ),
