@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/gallery_item.dart';
 import '../screens/detail_screen.dart';
+import '../theme/app_theme.dart';
 
 class GalleryCard extends StatelessWidget {
   final GalleryItem item;
@@ -25,7 +26,9 @@ class GalleryCard extends StatelessWidget {
       },
       child: Card(
         elevation: 4.0,
+        color: AppColors.primary,
         shape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.text),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(
@@ -58,7 +61,9 @@ class GalleryCard extends StatelessWidget {
                         padding: const EdgeInsets.all(4.0),
                         child: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : Colors.white,
+                          color: isFavorite
+                              ? const Color.fromARGB(255, 223, 63, 63)
+                              : AppColors.text,
                           size: 28,
                         ),
                       ),
@@ -75,10 +80,7 @@ class GalleryCard extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.caption,
               ),
             ),
           ],

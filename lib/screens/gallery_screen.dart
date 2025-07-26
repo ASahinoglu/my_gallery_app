@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_theme.dart';
 import '../gallery_data.dart';
 import '../models/gallery_item.dart';
 import '../widgets/gallery_card.dart';
@@ -121,7 +122,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
       appBar: CustomAppBar(
         titleText: 'MyGallery',
         actions: [
-          IconButton(icon: const Icon(Icons.sort), onPressed: _showSortOptions),
+          IconButton(
+            icon: const Icon(Icons.sort),
+            iconSize: 30.0,
+            color: AppColors.text,
+            onPressed: _showSortOptions,
+          ),
         ],
       ),
       body: SafeArea(

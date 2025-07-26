@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/gallery_card.dart';
 import '../widgets/custom_app_bar.dart';
 import '../gallery_data.dart';
+import '../theme/app_theme.dart';
 
 class FavoritesScreen extends StatelessWidget {
   final Set<String> favoriteIds;
@@ -24,10 +25,7 @@ class FavoritesScreen extends StatelessWidget {
       body: SafeArea(
         child: favoriteItems.isEmpty
             ? const Center(
-                child: Text(
-                  'Noch keine Favoriten.',
-                  style: TextStyle(fontSize: 18),
-                ),
+                child: Text('Noch keine Favoriten.', style: AppFonts.body),
               )
             : GridView.builder(
                 padding: const EdgeInsets.all(8.0),

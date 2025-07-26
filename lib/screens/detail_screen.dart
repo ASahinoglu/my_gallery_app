@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // für date formatting
 import 'package:my_gallery_app/models/gallery_item.dart';
+import '../theme/app_theme.dart';
+import 'package:my_gallery_app/widgets/custom_app_bar.dart';
 
 class DetailScreen extends StatelessWidget {
   final GalleryItem item;
@@ -12,7 +14,7 @@ class DetailScreen extends StatelessWidget {
     // Bildschirmhöhe abrufen, um die Bildhöhe relativ zu setzen
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: const Text('Details')),
+      appBar: CustomAppBar(titleText: 'Details', showBackButton: true),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -32,26 +34,14 @@ class DetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      item.imageTitle,
-                      style: const TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    Text(item.imageTitle, style: AppFonts.headline2),
                     const SizedBox(height: 8.0),
                     Text(
                       DateFormat('dd.MM.yyyy').format(item.imageDate),
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.grey,
-                      ),
+                      style: AppFonts.body,
                     ),
                     const SizedBox(height: 16.0),
-                    Text(
-                      item.imageDescription,
-                      style: const TextStyle(fontSize: 18.0),
-                    ),
+                    Text(item.imageDescription, style: AppFonts.caption),
                     const SizedBox(height: 16.0),
                   ],
                 ),

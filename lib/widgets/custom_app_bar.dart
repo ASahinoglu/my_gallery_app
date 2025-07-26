@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String titleText; // Der Titel als String
@@ -15,7 +16,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(titleText),
+      iconTheme: IconThemeData(color: AppColors.text),
+      title: Text(titleText, style: AppFonts.headline2),
       centerTitle: true,
       actions: actions,
 
